@@ -22,19 +22,19 @@ typedef struct Data{
 
 
 /*
-* Função: inserir_clientes
-* Descrição: Insere os dados de um cliente na lista.
-* Parâmetros:
+* FunÃ§Ã£o: inserir_clientes
+* DescriÃ§Ã£o: Insere os dados de um cliente na lista.
+* ParÃ¢metros:
 * listaClientes: vetor de clientes.
 * cliente: estrutura contendo os dados do cliente.
-* quantClientes: Números de Clientes Cadastrados
+* quantClientes: NÃºmeros de Clientes Cadastrados
 * Retorna:
 * A Nova Quantidade de Clientes
 Cadastrados
 */
 int inserir_clientes(cliente listaClientes[], int quantClientes)
 {
-	printf("\nInsira as informações do Cliente: \n");
+	printf("\nInsira as informaÃ§Ãµes do Cliente: \n");
 	printf("\nNome:");
 	scanf(" %s", listaClientes[quantClientes].nome);
 	
@@ -67,14 +67,14 @@ void excluir_cliente()
 }
 
 /*
-* Função: listar_nomes
-* Descrição: Lista o .
-* Parâmetros:
+* FunÃ§Ã£o: listar_nomes
+* DescriÃ§Ã£o: Lista o .
+* ParÃ¢metros:
 * lista: vetor de clientes.
 * cliente: estrutura contendo os dados do cliente.
 * Retorna:
-* 1 se a inserção for bem-sucedida, 0 caso
-contrário.
+* 1 se a inserÃ§Ã£o for bem-sucedida, 0 caso
+contrÃ¡rio.
 */
 
 void listar_nomes(cliente listaClientes[], int quantClientes)
@@ -98,10 +98,35 @@ void listar_nomes(cliente listaClientes[], int quantClientes)
 	}
 }
 
-void pesquisar_nome_empresa()
+void pesquisar_nome_empresa(cliente listaClientes[], int quantClientes)
 {
+	int i;
+	char nomeempresa[50];
 	
+	printf("Digite o nome da empresa:");
+	scanf("%s", nomeempresa);
+	
+	for(i = 0; i < quantClientes; i++)
+	{
+		if(strcmp(listaClientes[i].empresa, nomeempresa) == 0)
+		{
+			printf("\nCliente %d:", i+1);
+			printf("\nNome: %s", listaClientes[i].nome);
+			
+			printf("\nTelefone: %s", listaClientes[i].telefone);
+			
+			printf("\nEmpresa: %s", listaClientes[i].empresa);
+				
+			printf("\nEmail: %s", listaClientes[i].email);
+				
+			printf("\nCEP: %s", listaClientes[i].cep);
+				
+			printf("\nCelular: %s\n", listaClientes[i].celular);
+		}
+	}
+
 }
+
 
 void pesquisar_nome_cliente()
 {
@@ -131,7 +156,7 @@ int main()
 			case 2: alterar_dados(); break;
 			case 3: excluir_cliente(); break;
 			case 4: listar_nomes(listaClientes, quantClientes); break;
-			case 5: pesquisar_nome_empresa(); break;
+			case 5: pesquisar_nome_empresa(listaClientes, quantClientes); break;
 			case 6: pesquisar_nome_cliente(); break;
 			default: printf("\nOpcao Invalida!!\n");
 		}
